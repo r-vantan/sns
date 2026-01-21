@@ -1,37 +1,27 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "sns",
-  "main": "./dist/index.js",
+  "name": "my-bbs",
+  "main": "src/index.ts",
   "compatibility_date": "2026-01-21",
-  "compatibility_flags": [
-    "nodejs_compat"
+  "durable_objects": {
+    "bindings": [
+      {
+        "name": "CHAT_ROOM",
+        "class_name": "ChatRoom",
+      },
+    ],
+  },
+  "migrations": [
+    {
+      "tag": "v1",
+      "new_classes": ["ChatRoom"],
+    },
   ],
-  "assets": {
-    "directory": "./dist"
-  }
-  // "vars": {
-  //   "MY_VAR": "my-variable"
-  // },
-  // "kv_namespaces": [
-  //   {
-  //     "binding": "MY_KV_NAMESPACE",
-  //     "id": "xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx"
-  //   }
-  // ],
-  // "r2_buckets": [
-  //   {
-  //     "binding": "MY_BUCKET",
-  //     "bucket_name": "my-bucket"
-  //   }
-  // ],
-  // "d1_databases": [
-  //   {
-  //     "binding": "MY_DB",
-  //     "database_name": "my-database",
-  //     "database_id": ""
-  //   }
-  // ],
-  // "ai": {
-  //   "binding": "AI"
-  // }
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "my-bbs-db",
+      "database_id": "xxxx-xxxx-xxxx-xxxx",
+    },
+  ],
 }
